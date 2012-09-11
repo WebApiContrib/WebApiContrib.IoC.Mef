@@ -4,11 +4,7 @@ using System.Composition;
 using System.Composition.Convention;
 using System.Composition.Hosting;
 using System.Composition.Hosting.Core;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dependencies;
 
