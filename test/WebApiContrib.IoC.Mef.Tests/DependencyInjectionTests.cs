@@ -1,13 +1,9 @@
-﻿using System.Composition;
-using System.Composition.Hosting;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Http.Dispatcher;
 using Should;
-using WebApiContrib.IoC.Mef;
 using WebApiContrib.IoC.Mef.Tests.Parts;
 using Xunit;
 
