@@ -12,13 +12,13 @@ namespace WebApiContrib.IoC.Mef.Tests
     public class DependencyInjectionTests
     {
         [Fact]
-        public void MefDependencyResolver_Resolves_Registered_ContactRepository_Test()
+        public void MefDependencyResolver_Resolves_Registered_Both_Instaces_Of_IContactRepository_Test()
         {
             var resolver = MefDependencyResolver.CreateWithDefaultConventions(new[] { Assembly.GetAssembly(typeof(IContactRepository)) });
 
-            var instance = resolver.GetService(typeof(IContactRepository));
+            var repositories = resolver.GetServices(typeof(IContactRepository));
 
-            instance.ShouldNotBeNull();
+            repositories.Count().ShouldEqual(2);
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace WebApiContrib.IoC.Mef.Tests
         }
 
         [Fact]
-        public void MefDependencyResolver_Resolves_Registered_ContactRepository_ThroughHost_Test()
+        public void MefDependencyResolver_In_HttpConfig_Resolves_Registered_ContactRepository_ThroughHost_Test()
         {
             var config = new HttpConfiguration();
             var resolver = MefDependencyResolver.CreateWithDefaultConventions(new[] { Assembly.GetAssembly(typeof(IContactRepository)) });
@@ -61,7 +61,7 @@ namespace WebApiContrib.IoC.Mef.Tests
         }
 
         [Fact]
-        public void MefDependencyResolver_DoesNot_Resolve_NonRegistered_ContactRepositories_Test()
+        public void MefDependencyResolver_In_HttpConfig_DoesNot_Resolve_NonRegistered_ContactRepositories_Test()
         {
             var config = new HttpConfiguration();
             var resolver = MefDependencyResolver.CreateWithDefaultConventions(new Assembly[0]);
@@ -73,7 +73,7 @@ namespace WebApiContrib.IoC.Mef.Tests
         }
 
         [Fact]
-        public void MefDependencyResolver_Resolves_Registered_Both_Instaces_Of_IContactRepository()
+        public void MefDependencyResolver_In_HttpConfig_Resolves_Registered_Both_Instaces_Of_IContactRepository_Test()
         {
             var config = new HttpConfiguration();
             var resolver = MefDependencyResolver.CreateWithDefaultConventions(new[] { Assembly.GetAssembly(typeof(IContactRepository)) });
